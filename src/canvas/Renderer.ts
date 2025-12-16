@@ -1,5 +1,6 @@
 import {
   ACESFilmicToneMapping,
+  PCFSoftShadowMap,
   SRGBColorSpace,
   Vector2,
   WebGLRenderer,
@@ -35,6 +36,7 @@ export class Renderer {
     this.instance.setPixelRatio(this.sizes.pixelRatio);
 
     this.instance.shadowMap.enabled = true;
+    this.instance.shadowMap.type = PCFSoftShadowMap;
 
     this.composer = new EffectComposer(this.instance);
     this.composer.addPass(new RenderPass(scene, camera));

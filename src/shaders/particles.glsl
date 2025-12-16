@@ -25,7 +25,7 @@ void main() {
   float size = uSize * aScale * uPixelRatio;
   gl_PointSize = size * (1.0 / max(1.0, dist));
 
-  vAlpha = smoothstep(55.0, 8.0, dist);
+  vAlpha = smoothstep(140.0, 10.0, dist);
 }
 
 // @stage fragment

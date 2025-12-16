@@ -20,7 +20,7 @@ void main() {
   float scan = sin((vUv.y * 140.0 + t * 10.0) + uProgress * 8.0) * 0.03;
   col += scan;
 
-  float fog = smoothstep(10.0, 45.0, vDepth);
+  float fog = smoothstep(25.0, 130.0, vDepth);
   col = mix(col, vec3(0.02, 0.03, 0.06), fog);
 
   gl_FragColor = vec4(col, 1.0);

@@ -3,6 +3,9 @@ import { Camera } from "@/src/canvas/Camera";
 import { Lights } from "@/src/canvas/Lights";
 import { Renderer } from "@/src/canvas/Renderer";
 import { Scene } from "@/src/canvas/Scene";
+import { About3D } from "@/src/objects/About3D";
+import { CallToAction3D } from "@/src/objects/CallToAction3D";
+import { Curriculum3D } from "@/src/objects/Curriculum3D";
 import { Environment } from "@/src/objects/Environment";
 import { Particles } from "@/src/objects/Particles";
 import { Typography3D } from "@/src/objects/Typography3D";
@@ -21,6 +24,9 @@ export class Experience {
   environment: Environment;
   particles: Particles;
   typography: Typography3D;
+  curriculum: Curriculum3D;
+  about: About3D;
+  cta: CallToAction3D;
 
   private cleanups: Array<() => void>;
 
@@ -39,6 +45,9 @@ export class Experience {
     this.environment = new Environment(this.scene.instance);
     this.particles = new Particles(this.scene.instance, this.sizes);
     this.typography = new Typography3D(this.scene.instance);
+    this.curriculum = new Curriculum3D(this.scene.instance);
+    this.about = new About3D(this.scene.instance);
+    this.cta = new CallToAction3D(this.scene.instance);
 
     this.renderer = new Renderer({
       canvas,
@@ -59,6 +68,10 @@ export class Experience {
       environment: this.environment,
       particles: this.particles,
       typography: this.typography,
+      curriculum: this.curriculum,
+      about: this.about,
+      cta: this.cta,
+      renderer: this.renderer,
     });
 
     this.cleanups.push(dispose);
@@ -89,6 +102,7 @@ export class Experience {
   private setupTick() {
     const onTick = () => {
       this.camera.update(this.time.delta);
+      this.lights.update(this.time.elapsed);
       this.environment.update(this.time.elapsed);
       this.particles.update(this.time.elapsed);
       this.renderer.update();
@@ -104,6 +118,9 @@ export class Experience {
     this.environment.dispose();
     this.particles.dispose();
     this.typography.dispose();
+    this.curriculum.dispose();
+    this.about.dispose();
+    this.cta.dispose();
 
     this.renderer.dispose();
     this.time.dispose();

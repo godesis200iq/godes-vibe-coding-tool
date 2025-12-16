@@ -18,9 +18,9 @@ export class Environment {
   material: ShaderMaterial;
 
   constructor(scene: Scene) {
-    const tunnelGeometry = new CylinderGeometry(4.25, 4.25, 75, 64, 180, true);
+    const tunnelGeometry = new CylinderGeometry(4.25, 4.25, 160, 64, 120, true);
     tunnelGeometry.rotateX(Math.PI / 2);
-    tunnelGeometry.translate(0, 0, -18);
+    tunnelGeometry.translate(0, 0, -55);
 
     this.material = new ShaderMaterial({
       vertexShader,
@@ -38,9 +38,9 @@ export class Environment {
     this.tunnel.frustumCulled = false;
     scene.add(this.tunnel);
 
-    const floorGeometry = new PlaneGeometry(30, 120, 1, 1);
+    const floorGeometry = new PlaneGeometry(40, 260, 1, 1);
     floorGeometry.rotateX(-Math.PI / 2);
-    floorGeometry.translate(0, -2.6, -22);
+    floorGeometry.translate(0, -2.6, -85);
 
     const floorMaterial = new MeshStandardMaterial({
       color: new Color("#05070c"),

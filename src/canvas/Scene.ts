@@ -6,6 +6,6 @@ export class Scene {
   constructor() {
     this.instance = new ThreeScene();
     this.instance.background = new Color("#02040a");
-    this.instance.fog = new FogExp2("#02040a", 0.04);
+    this.instance.fog = new FogExp2("#02040a", 0.03);
   }
 }

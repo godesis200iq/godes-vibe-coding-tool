@@ -49,7 +49,7 @@ export class Particles {
 
       positions[i3 + 0] = Math.cos(angle) * radius;
       positions[i3 + 1] = (Math.sin(angle) * radius) / 1.4;
-      positions[i3 + 2] = 3 - Math.random() * 62;
+      positions[i3 + 2] = 3 - Math.random() * 150;
 
       scales[i] = 0.35 + Math.random() * 1.25;
     }
