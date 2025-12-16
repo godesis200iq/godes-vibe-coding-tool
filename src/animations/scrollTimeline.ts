@@ -11,6 +11,19 @@ import type { Environment } from "@/src/objects/Environment";
 import type { Particles } from "@/src/objects/Particles";
 import type { Typography3D } from "@/src/objects/Typography3D";
 
+export const SCROLL_PAGES = 10;
+export const TIMELINE_TOTAL = 12;
+
+export const BEATS = {
+  start: 0,
+  tools: 2,
+  curriculum: 4,
+  about: 7.5,
+  mission: 10,
+} as const;
+
+export type Beat = keyof typeof BEATS;
+
 export type ScrollTimelineTargets = {
   camera: Camera;
   environment: Environment;
@@ -34,13 +47,13 @@ export const initScrollTimeline = ({
 }: ScrollTimelineTargets) => {
   gsap.registerPlugin(ScrollTrigger);
 
-  const total = 12;
+  const total = TIMELINE_TOTAL;
 
-  const intro = 0;
-  const tools = 2;
-  const lessons = 4;
-  const aboutBeat = 7.5;
-  const finale = 10;
+  const intro = BEATS.start;
+  const tools = BEATS.tools;
+  const lessons = BEATS.curriculum;
+  const aboutBeat = BEATS.about;
+  const finale = BEATS.mission;
 
   const curriculumPanels = curriculum.items.map(
     (item) => item.panel.material as MeshStandardMaterial
@@ -51,7 +64,7 @@ export const initScrollTimeline = ({
     scrollTrigger: {
       trigger: document.body,
       start: "top top",
-      end: () => `+=${window.innerHeight * 10}`,
+      end: () => `+=${window.innerHeight * SCROLL_PAGES}`,
       scrub: true,
     },
   });
