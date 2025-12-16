@@ -1,0 +1,19 @@
+# dependencies
+node_modules
+
+# production
+.next
+out
+build
+
+# misc
+.DS_Store
+*.log
+
+# env
+.env
+.env.*
+
+# local
+.vscode
+.idea
